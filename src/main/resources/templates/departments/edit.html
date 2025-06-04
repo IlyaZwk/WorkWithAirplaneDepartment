@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Airplane Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+</head>
+<body>
+<div class="col-md mx-auto rounded border p-4">
+  <a class="btn btn-primary" href="/departments">Return to List</a>
+</div>
+<div class="container my-3">
+  <div class="row">
+    <div class="col-md mx-auto rounded border p-4">
+      <h2 class="text-center mb-5">Edit Department</h2>
+      <form method="post" th:object="${departmentDto}">
+        <div class="row mb-3">
+          <label class="col-sm-4 col-form-label">Id</label>
+          <div class="col-sm-8">
+            <input class="form-control-plaintext" readonly th:value="${departmentDto.id}">
+
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-4 col-form-label">Address</label>
+          <div class="col-sm-8">
+            <input class="form-control" th:field="${departmentDto.address}">
+            <p th:if="${#fields.hasErrors('address')}"
+               th:errorclass="text-danger"
+               th:errors="${departmentDto.address}"></p>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-4 col-form-label">DepartureTimeOfAirplane</label>
+          <div class="col-sm-8">
+            <input class="form-control" th:field="${departmentDto.departureTimeOfAirplane}">
+            <p th:if="${#fields.hasErrors('departureTimeOfAirplane')}"
+               th:errorclass="text-danger"
+               th:errors="${departmentDto.departureTimeOfAirplane}"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="offset-sm-4 col-sm-4 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          <div class="col-sm-4 d-grid">
+            <button class="btn btn-outline-primary" href="/departments">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>
